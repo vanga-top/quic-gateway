@@ -7,5 +7,17 @@
 * use QUIC protocol for communicating to client
 * support graceful restart and update
 * stateless and distribute server-cluster
-* 
 
+
+
+### arch
+
+
+
+### details
+
+#### server arch
+
+* server interface to control server activities
+* server plugins to build for more protocols and others
+* 
