@@ -19,5 +19,9 @@
 #### server arch
 
 * server interface to control server activities
+
+  * server start/stop/stop right now/restart/update
+  *   
+
 * server plugins to build for more protocols and others
 * 
