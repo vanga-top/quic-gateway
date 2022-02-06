@@ -1,6 +1,6 @@
-## Design
+# Design
 
-### features
+## features
 
 * http proxy gateway
 * service function gateway (support for gRpc/spring-cloud etc.)
@@ -9,19 +9,26 @@
 * stateless and distribute server-cluster
 
 
+## details
 
-### arch
-
-
-
-### details
-
-#### server arch
+### server arch
 
 * server interface to control server activities
 
   * server start/stop/stop right now/restart/update
-  *   
 
-* server plugins to build for more protocols and others
-* 
+* server modules to build for more protocols and others
+  * quic
+  * http1.1
+  * log
+  * proxy
+  * filter
+* plugins for third part 
+  * storage
+  * service proxy such as gRPC
+  
+#### server interface
+
+
+  
+
