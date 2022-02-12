@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"fmt"
 	gateway "github.com/vanga/quic-gy"
+	"github.com/vanga/quic-gy/utils"
 	"strings"
 
 	// plug in Gateway modules here
@@ -13,7 +13,8 @@ func init() {
 	mod := gateway.GoModule()
 	cleanModVersion := strings.TrimPrefix(mod.Version, "v")
 	version := "Gateway/" + cleanModVersion
-	fmt.Println(version)
+	utils.DefaultLogger.SetLogLevel(utils.LogLevelDebug)
+	utils.DefaultLogger.Debugf("version is: %s", version)
 }
 
 func Run() {
