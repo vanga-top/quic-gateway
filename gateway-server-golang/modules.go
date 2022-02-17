@@ -42,10 +42,10 @@ func RegisterModule(module Module) {
 		panic(fmt.Sprintf("module ID '%s' is reserved", mod.ID))
 	}
 	if mod.New == nil {
-		panic("missing ModuleInfo.New")
+		panic("missing ModuleInfo.Init")
 	}
 	if val := mod.New(); val == nil {
-		panic("ModuleInfo.New must return a non-nil module instance")
+		panic("ModuleInfo.Init must return a non-nil module instance")
 	}
 	modulesMu.Lock()
 	defer modulesMu.Unlock()
