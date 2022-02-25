@@ -56,9 +56,13 @@ func RegisterModule(module Module) {
 	modules[string(mod.ID)] = module
 }
 
-func Modules() []Module {
-
-	return nil
+// ListModules /**
+func ListModules() []Module {
+	results := make([]Module, len(modules))
+	for _, r := range modules {
+		results = append(results, r)
+	}
+	return results
 }
 
 var (
