@@ -1,6 +1,9 @@
 package cmd
 
-import gateway "github.com/vanga/quic-gy"
+import (
+	gateway "github.com/vanga/quic-gy"
+	"time"
+)
 
 //Server behavior is same as cmd functions
 type Server interface {
@@ -17,6 +20,10 @@ type Server interface {
 }
 
 type ServerInstance struct {
+	ServerID  string
+	cfg       *gateway.Config
+	StartTime time.Duration
+	pipeline  gateway.Pipeline
 }
 
 func (s ServerInstance) Init(cfg *gateway.Config) *Server {
