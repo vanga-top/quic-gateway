@@ -7,7 +7,7 @@ import (
 )
 
 func TestUserStory(t *testing.T) {
-	cfg := gateway.ParseConfig("")
+	cfg := gateway.ParseConfig("/Users/chenhui/github/quic-gateway/gateway-server-golang/cmd/run/gateway.conf")
 	si := &cmd.ServerInstance{}
 	si.Init(cfg)
 	si.Start()
