@@ -1,15 +1,17 @@
 package gateway
 
 import (
-	"fmt"
 	"github.com/vanga/quic-gy/utils"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 // Config for server instance
 type Config struct {
 	ServerID string
+
+	OriginContent string
 }
 
 // ParseConfig parse gateway.conf to Config
@@ -22,7 +24,10 @@ func ParseConfig(path string) *Config {
 	if ioerror != nil {
 		utils.DefaultLogger.Errorf("error in io read: %s", ioerror)
 	}
-	fmt.Println(string(contentByte))
-	
-	return nil
+	//content for config
+	content := string(contentByte)
+	//start parse
+	config := &Config{OriginContent: content}
+	strings.Split(content, " ")
+	return config
 }
