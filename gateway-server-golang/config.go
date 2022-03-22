@@ -28,6 +28,21 @@ func ParseConfig(path string) *Config {
 	content := string(contentByte)
 	//start parse
 	config := &Config{OriginContent: content}
+	/**
+	//解析文档的算法
+	1、先锁关键字和方法体
+	2、
+	*/
 	strings.Split(content, " ")
 	return config
+}
+
+type token struct {
+}
+
+type liner struct {
+	lineContent  string
+	lingNum      int
+	isStartToken bool
+	isEndToken   bool
 }
