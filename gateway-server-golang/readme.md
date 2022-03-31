@@ -7,6 +7,7 @@
 * use QUIC protocol for communicating to client
 * support graceful restart and update
 * stateless and distribute server-cluster
+* support service-interface build module
 
 
 ## details
