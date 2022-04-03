@@ -14,3 +14,7 @@ func TestUserStory(t *testing.T) {
 
 	select {}
 }
+
+func TestRun(t *testing.T) {
+	cmd.Run()
+}

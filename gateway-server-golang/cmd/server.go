@@ -38,6 +38,9 @@ func NewServer(cfg *gateway.Config) *ServerInstance {
 }
 
 func (s *ServerInstance) Init() *Server {
+	//load all modules
+	//build pipeline
+
 	//TODO implement me
 	panic("implement me")
 }

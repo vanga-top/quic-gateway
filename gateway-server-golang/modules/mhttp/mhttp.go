@@ -1,7 +1,9 @@
 package mhttp
 
-import _ "github.com/lucas-clemente/quic-go"
+import (
+	"fmt"
+)
 
 func init() {
-
+	fmt.Printf("load mhttp module....")
 }
