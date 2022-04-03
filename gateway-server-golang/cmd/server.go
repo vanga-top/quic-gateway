@@ -17,6 +17,11 @@ type Server interface {
 	Upgrade() (error, string)
 	//Modules list add register modules in Server
 	Modules() []*gateway.Module
+	//ServerCMDListener when server cmd event called
+	ServerCMDListener(event ServerCMDEvent)
+}
+
+type ServerCMDEvent interface {
 }
 
 type ServerInstance struct {
@@ -26,32 +31,39 @@ type ServerInstance struct {
 	pipeline  gateway.Pipeline
 }
 
-func (s ServerInstance) Init(cfg *gateway.Config) *Server {
+//New ServerInstance
+func NewServer(cfg *gateway.Config) *ServerInstance {
+
+	return &ServerInstance{}
+}
+
+func (s *ServerInstance) Init() *Server {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s ServerInstance) Start() *Server {
+func (s *ServerInstance) Start() *Server {
+	s.Modules()
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s ServerInstance) Stop(gracefully bool) error {
+func (s *ServerInstance) Stop(gracefully bool) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s ServerInstance) Reload(newCfg *gateway.Config) *Server {
+func (s *ServerInstance) Reload(newCfg *gateway.Config) *Server {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s ServerInstance) Upgrade() (error, string) {
+func (s *ServerInstance) Upgrade() (error, string) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s ServerInstance) Modules() []*gateway.Module {
+func (s *ServerInstance) Modules() []*gateway.Module {
 	//TODO implement me
 	panic("implement me")
 }

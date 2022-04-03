@@ -8,8 +8,8 @@ import (
 
 func TestUserStory(t *testing.T) {
 	cfg := gateway.ParseConfig("/Users/chenhui/github/quic-gateway/gateway-server-golang/cmd/run/gateway.conf")
-	si := &cmd.ServerInstance{}
-	si.Init(cfg)
+	si := cmd.NewServer(cfg)
+	si.Init()
 	si.Start()
 
 	select {}
