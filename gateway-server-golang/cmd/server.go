@@ -33,8 +33,8 @@ type ServerInstance struct {
 
 //New ServerInstance
 func NewServer(cfg *gateway.Config) *ServerInstance {
-
-	return &ServerInstance{}
+	pi := &gateway.PipelineInstance{}
+	return &ServerInstance{pipeline: pi}
 }
 
 func (s *ServerInstance) Init() *Server {
