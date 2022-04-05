@@ -2,21 +2,21 @@ package cmd
 
 import (
 	gateway "github.com/vanga/quic-gy"
+	"github.com/vanga/quic-gy/modules/mhttp"
 	"time"
 )
 
 //Server behavior is same as cmd functions
 type Server interface {
-	//
-	Init(cfg *gateway.Config) *Server
-	Start() *Server
+	Init() Server
+	Start() Server
 	Stop(gracefully bool) error
 	// Reload graceful reload server, return new Server
-	Reload(newCfg *gateway.Config) *Server
+	Reload(newCfg *gateway.Config) Server
 	//Upgrade return error & version
 	Upgrade() (error, string)
 	//Modules list add register modules in Server
-	Modules() []*gateway.Module
+	Modules() []gateway.Module
 	//ServerCMDListener when server cmd event called
 	ServerCMDListener(event ServerCMDEvent)
 }
@@ -34,21 +34,24 @@ type ServerInstance struct {
 //New ServerInstance
 func NewServer(cfg *gateway.Config) *ServerInstance {
 	pi := &gateway.PipelineInstance{}
-	return &ServerInstance{pipeline: pi}
+	return &ServerInstance{pipeline: pi,
+		cfg: cfg}
 }
 
-func (s *ServerInstance) Init() *Server {
+func (s *ServerInstance) Init() Server {
 	//load all modules
 	//build pipeline
-
+	//这里看看能不能解决，不使用不load的模式
+	mhModule := mhttp.MHttpModule{}
+	s.pipeline.Add(mhModule)
 	//TODO implement me
-	panic("implement me")
+	return s
 }
 
-func (s *ServerInstance) Start() *Server {
+func (s *ServerInstance) Start() Server {
 	s.Modules()
-	//TODO implement me
-	panic("implement me")
+
+	return s
 }
 
 func (s *ServerInstance) Stop(gracefully bool) error {
@@ -56,7 +59,7 @@ func (s *ServerInstance) Stop(gracefully bool) error {
 	panic("implement me")
 }
 
-func (s *ServerInstance) Reload(newCfg *gateway.Config) *Server {
+func (s *ServerInstance) Reload(newCfg *gateway.Config) Server {
 	//TODO implement me
 	panic("implement me")
 }
@@ -66,7 +69,10 @@ func (s *ServerInstance) Upgrade() (error, string) {
 	panic("implement me")
 }
 
-func (s *ServerInstance) Modules() []*gateway.Module {
-	//TODO implement me
-	panic("implement me")
+func (s *ServerInstance) Modules() []gateway.Module {
+	return s.pipeline.Chain()
+}
+
+func (s *ServerInstance) ServerCMDListener(event ServerCMDEvent) {
+
 }

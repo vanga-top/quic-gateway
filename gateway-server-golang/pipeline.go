@@ -11,6 +11,7 @@ type Pipeline interface {
 }
 
 type PipelineInstance struct {
+	moduleChain []Module
 }
 
 func (p PipelineInstance) First() Module {
@@ -24,13 +25,11 @@ func (p PipelineInstance) List() Module {
 }
 
 func (p PipelineInstance) Chain() []Module {
-	//TODO implement me
-	panic("implement me")
+	return p.moduleChain
 }
 
 func (p PipelineInstance) Add(module Module) (bool, string) {
-	//TODO implement me
-	panic("implement me")
+	return true, "ok"
 }
 
 func (p PipelineInstance) Remove(ID string) bool {
